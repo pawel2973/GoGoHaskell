@@ -1,0 +1,65 @@
+====== PLIKI .HS =======
++ Zazwyczaj definicje funkcji umieszczane sa w plikach o rozszerzeniu hs.
+
++ Wczytywanie plików hs
+	:load (skrót :l), którego parametrem jest nazwa wczytywanego pliku
+	:reload (skrót :r)
+	
++ W Haskellu nie wystepuja zmienne
+
++ funkcje i operatory zdefiniowane w pliku prelude.hs.
+
+
+===== OPERATORY ======
+W Haskellu operator jest to funkcja przyjmujaca dwa argumenty, której nazwa jest umieszczana pomiedzy argumentami, a nie przed nimi. Ponadto nazwa operatora składa sie z jednego lub wiekszej liczby symboli.
+
+: # % & * + - = . / \ < > ? ! ^ | @
+
++ Operator umieszczony w nawiasach okragłych zachowuje si˛e jak zwykła funkcja – umieszczany jest przed argumentami					(*) 2 6
+
++ Funkcja dwuargumentowa umieszczona w odwrotnych apostrofach zachowuje sie jak operator – umieszczana jest miedzy argumentami.  		8 ‘gcd‘ 12
+
+
+===== FUNKCJE ======
+x,y 					//parametry	formalne		
+x^2 + y^2 - pi*x*y		//Wyrazenie po znaku = okreslajace jak wyznaczyc wartosc funkcji
+
+-- plik functions.hs
+module Functions where
+nazwaFunkcji x y = x^2 + y^2 - pi*x*y
+
+Definiowanie funkcji
+
+f1 x = sin x + cos x
+-- f2 i f3 rownowazne 
+-- W obu przypadkach definiujemy w zasadzie alias dla funkcji sqrt
+f2 y = sqrt y
+f3 = sqrt
+
+-- Wywołanie funkcji z mniejsza liczba argumentów aktualnych niz jej liczba argumentów formalnych nazywane jest czesciowa aplikacja
+h1 x = mod 12 x
+h2 = mod 12 -- równowazne h1
+h3 x = mod x 12 -- tutaj nie mozemy pominac x
+h4 = (‘mod‘ 12) -- równowazne h3 -> patrz nastepny slajd
+
+===== SEKCJE =====
+Rodzaj notacji w haskellu dla czesciowo zaaplikowanych operatorow
+successor = (+ 1) -- successor 34 35
+double = (2 *) -- double 45 90
+half = (/ 2.0) -- half 5 2.5
+-- jawnie
+successor’ x = x + 1
+double’ x = 2 * x
+
+===== TYPY DANYCH =====
+Kazde wyrazenie w Haskellu ma swój typ. Fakt, ze wartosc v ma typ T zapisujemy jako v::T.
++ mozna sprawdzic typ wyrazenia wywołujac dla niego polecenie :type (skrót :t)
+
+*Functions> :t 5
+5 :: Num a => a -- wartosc dowolnego typu klasy Num
+
+*Functions> :t f1
+f1 :: Floating a => a -> a -- funkcja a -> a, gdzie a nalezy do klasy Floating
+
+
+
