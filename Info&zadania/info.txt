@@ -15,7 +15,7 @@ W Haskellu operator jest to funkcja przyjmujaca dwa argumenty, której nazwa jes
 
 : # % & * + - = . / \ < > ? ! ^ | @
 
-+ Operator umieszczony w nawiasach okragłych zachowuje si˛e jak zwykła funkcja – umieszczany jest przed argumentami					(*) 2 6
++ Operator umieszczony w nawiasach okragłych zachowuje sie jak zwykła funkcja – umieszczany jest przed argumentami					(*) 2 6
 
 + Funkcja dwuargumentowa umieszczona w odwrotnych apostrofach zachowuje sie jak operator – umieszczana jest miedzy argumentami.  		8 ‘gcd‘ 12
 
