@@ -109,3 +109,66 @@ countLowerUpper1 [] = (0,0)
 countLowerUpper1 text = (length (filter isLower text),length (filter isUpper text))
 
 
+
+
+-- ### 4.4 ###
+{-
+    (*) Zdefiniuj funkcję string2bools, która listę znaków zastępuje listą wartości logicznych określających, czy oryginalny element był małą literą, czy też nie. Funkcję umieść w module Lists.
+
+    Wskazówka:
+    Do modułu Lists poniżej słowa where dodaj poniższą linię:
+    import Data.Char
+-}
+string2bools2 :: [Char] -> [Bool]
+string2bools2 [] = []
+string2bools2 (x:xs) = isLower x : string2bools2 xs
+
+-- Lepsze rozwiązanie jeżeli podamy inne znaki niz litery
+string2bools [] = []
+string2bools (x:xs) | x >= 'a' && x <= 'z' = True : string2bools xs
+           | x >='A' && x <= 'Z' = False : string2bools xs
+           | otherwise = string2bools xs -- jezeli co innego niz litery
+
+           
+           
+           
+-- ### 4.5 ###
+{-
+	W module lists zdefiniuj funkcje, które jako argumenty przyjmują liczbę x i listę liczb tego samego typu i które jako wynik zwracają:
+
+	1. funkcja cgtx liczbę elementów listy większych od x;
+	2. (*) funkcja cltx liczbę elementów listy mniejszych od x;
+	3. funkcja gtx listę elementów z listy wejściowych większych od x;
+	4. (*) funckja ltx listę elementów z listy wejściowych mniejszych lub równych x.
+-}
+
+-- 4.5.1
+cgtx :: Int -> [Int] -> Int
+cgtx x [] = 0
+cgtx x (y:ys) | x < y = 1 + cgtx x ys
+              | otherwise = cgtx x ys
+
+-- 4.5.2
+cltx :: Int -> [Int] -> Int
+cltx x [] = 0
+cltx x (y:ys) | x > y = 1 + cltx x ys
+              | otherwise = cltx x ys
+
+-- 4.5.3
+gtx :: Int -> [Int] -> [Int]
+gtx x [] = []
+gtx x (y:ys) | x < y  = y : gtx x ys
+             | otherwise = gtx x ys
+
+-- 4.5.4
+--ltx :: 
+
+
+
+
+
+
+
+
+
+
