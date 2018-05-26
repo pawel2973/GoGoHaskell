@@ -33,4 +33,5 @@ re (a, b) = a
 im (a,b) = b
 
 -- funkcję i zwracającą jako wynik jednostkę urojoną.
--- ???
+i :: (Double,Double)
+i=(0,1)

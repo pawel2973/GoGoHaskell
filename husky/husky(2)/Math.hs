@@ -109,6 +109,14 @@ seq'' n = 0.5 * seq'(n-1) + 2 * seq'(n-2)
 	(*) Zdefiniuj własną funkcję gcd' (największy wspólny dzielnik). Implementacja ma się opierać na algorytmie Euklidesa. Można stosować wyłącznie operatory relacyjne i operator odejmowania. Funkcję umieść w module Math.
 -}
 
+gcd'' a b =
+  if a > b then
+    gcd'' (a-b) b
+  else if a < b then
+    gcd'' a (b-a)
+  else
+	a
+
 gcd' a 0 = a
 gcd' 0 b = b
 gcd' a b = gcd' b (a `rem` b)
