@@ -56,7 +56,7 @@ sumOfSquares' (x:xs) = x^2 + sumOfSquares' xs
 -- 4.2.1
 -- Adnotacja: Stosowany jest pierwszy napotkany przypadek, który jest mozliwy do wykonania
 sum1 :: [Double] -> Double
-
+sum1 [] = 0
 sum1 (x:_:xs) = x + sum1 xs
 sum1 (x:xs) = x
 
