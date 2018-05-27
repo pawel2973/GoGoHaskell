@@ -161,14 +161,61 @@ gtx x (y:ys) | x < y  = y : gtx x ys
              | otherwise = gtx x ys
 
 -- 4.5.4
---ltx :: 
+ltx :: Int -> [Int] -> [Int]
+ltx x [] = []
+ltx x (y:ys) | y <= x = y : ltx x ys
+             | otherwise = ltx x ys
 
 
 
 
+-- ### 4.6 ###
+{-
+	Zdefiniuj funkcję string2int przekształcającą tekst złożony z cyfr na odpowiednią wartość liczbową. Funkcję umieść w module Lists.
+-}
+
+-- sp1
+string2int :: String -> Int
+string2int x = read x
+
+-- sp2 
+string2int' x = read x :: Int
 
 
 
 
+-- ### 4.7 ###
+{-
+	Stosując funkcje standardowe operujące na listach oblicz:
 
+	1. suma od 1 do 100 liczb postaci 1/n;
+	2. iloczyn od 1 do 50 liczb postaci (1+n)/(2+n);
+	3. (*) suma od 1 do 1000 liczb postaci 1/(i^2);
+	4. (*) suma od 1 do 1000 liczb postaci (sqrt i)-1/i;
+	5. (*) iloczyn od 1 do 1000 liczb postaci (i+1)/(i^3).
+-}
 
+-- 4.7.1
+s1 = sum(map (1/) [1 .. 100])
+s1' = sum(map(\ n -> 1/n) [1..100])
+
+-- 4.7.2
+-- foldl wstawia operator pomiedzy wszystkie elementy listy zaczynajac od lewej strony
+s2 = foldl (*) 1 (map(\ n -> (1+n)/(2+n)) [1 .. 50])
+s2' = product(map(\ n -> (1+n)/(2+n)) [1 .. 50])
+
+-- 4.7.3
+s3 = sum(map(\ i -> 1/(i^2)) [1 .. 1000])
+
+-- 4.7.4
+s4 = sum(map(\ i -> (sqrt i)-1/i) [1 .. 1000])
+
+-- 4.7.5
+s5 = product(map(\ i -> (1+i)/(i^3)) [1 .. 1000])
+s5' = foldl (*) 1 (map(\ i -> (1+i)/(i^3)) [1 .. 1000])
+
+-- ### 4.8 ###
+{-
+	(*) Zdefiniuj funkcję primePairs zwracającą listę par liczb pierwszych takich, że drugi element pary jest większy o 2 od pierwszego.
+	(*) Zdefiniuj funkcję primeTriples zwracającą listę trójek liczb pierwszych takich, że drugi element trójki jest większy o 2 od pierwszego, a trzeci jest większy o dwa od drugiego.
+-}
